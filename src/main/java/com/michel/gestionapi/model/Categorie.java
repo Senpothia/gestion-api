@@ -56,7 +56,7 @@ public class Categorie {
 		this.operations = operations;
 	}
 	
-	
+	 
 	
 	
 

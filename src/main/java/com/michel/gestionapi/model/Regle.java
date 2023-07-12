@@ -3,6 +3,7 @@ package com.michel.gestionapi.model;
 import java.time.Duration;
 import java.time.LocalDateTime;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -18,9 +19,12 @@ public class Regle {
 	@ManyToOne
 	private Compte compte;
 	
+	@ManyToOne
 	private Categorie categorie;
 	
-	private Integer valeur;  // valeur du montant de dépense limite
+	@Column(precision=8, scale=2) 
+	  private float valeur;
+  // valeur du montant de dépense limite
 	
 	private Integer interval;  // Durée d'application de la règle en nombre de mois
 	
@@ -37,7 +41,7 @@ public class Regle {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Regle(Integer id, Compte compte, Categorie categorie, Integer valeur, Integer interval, LocalDateTime init,
+	public Regle(Integer id, Compte compte, Categorie categorie, float valeur, Integer interval, LocalDateTime init,
 			LocalDateTime fin, Boolean active, Boolean notified) {
 		super();
 		this.id = id;
@@ -75,11 +79,11 @@ public class Regle {
 		this.categorie = categorie;
 	}
 
-	public Integer getValeur() {
+	public float getValeur() {
 		return valeur;
 	}
 
-	public void setValeur(Integer valeur) {
+	public void setValeur(float valeur) {
 		this.valeur = valeur;
 	}
 
@@ -122,7 +126,7 @@ public class Regle {
 	public void setNotified(Boolean notified) {
 		this.notified = notified;
 	}
-	
+
 	
 	
 	

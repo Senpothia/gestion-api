@@ -6,4 +6,8 @@ import com.michel.gestionapi.model.Utilisateur;
 
 public interface UtilisateurRepository extends JpaRepository<Utilisateur, Integer> {
 
+	Utilisateur findByUsername(String email);
+
+	Utilisateur findByEmail(String email);
+
 }

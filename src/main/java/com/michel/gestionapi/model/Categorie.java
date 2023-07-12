@@ -3,6 +3,7 @@ package com.michel.gestionapi.model;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -15,6 +16,7 @@ public class Categorie {
 	@GeneratedValue
 	private Integer id;
 	
+	@Column(unique=true)
 	private String nom;
 	
 	@ManyToMany(mappedBy = "categories")

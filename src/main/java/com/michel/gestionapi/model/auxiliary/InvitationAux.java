@@ -1,20 +1,18 @@
 package com.michel.gestionapi.model.auxiliary;
 
-import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 import com.michel.gestionapi.model.Compte;
+import com.michel.gestionapi.model.Utilisateur;
 
-public class OperationAux {
+public class InvitationAux {
 	
 	
-
 	private Integer id;
 	private CompteAux compte;
-	private float montant;
-	private CategorieAux categorie;
-	
+	private UtilisateurAux invite;
+	private String droit;
 
 }

@@ -21,47 +21,52 @@ public class CategorieService implements CategorieAbstractService, CommandLineRu
 
 	public void buildCategories() {
 		
-		List<Categorie> categories = new ArrayList<>();
- 		Categorie alimentation = new Categorie("Alimentation");
- 		categories.add(alimentation);
-		Categorie transport = new Categorie("Transport");
-		categories.add(transport);
-		Categorie loisir = new Categorie("Loisir");
-		categories.add(loisir);
-		Categorie foyer = new Categorie("Foyer");
-		categories.add(foyer);
-		Categorie entretien = new Categorie("Entretien");
-		categories.add(entretien);
-		Categorie voiture = new Categorie("Voiture");
-		categories.add(voiture);
-		Categorie formation = new Categorie("Formation");
-		categories.add(formation);
-		Categorie culture = new Categorie("Culture");
-		categories.add(culture);
-		Categorie telephonie = new Categorie("Téléphonie");
-		categories.add(telephonie);
-		Categorie impots = new Categorie("Impôt");
-		categories.add(impots);
-		Categorie assurance = new Categorie("Assurance");
-		categories.add(assurance);
-		Categorie abonnement = new Categorie("Abonnement");
-		categories.add(abonnement);
-		Categorie pension = new Categorie("Pension");
-		categories.add(pension);
-		Categorie famille = new Categorie("Famille");
-		categories.add(famille);
-		Categorie jardin = new Categorie("Jardin");
-		categories.add(jardin);
-		Categorie professionnel = new Categorie("Professionnel");
-		categories.add(professionnel);
-		Categorie credit = new Categorie("Crédit");
-		categories.add(credit);
-		Categorie outils = new Categorie("Outils");
-		categories.add(outils);
-		
-		for(Categorie c: categories) {
+		List<Categorie> cats = getAllCategories();
+		if(cats.isEmpty()) {
 			
-			categorieRepo.save(c);
+			List<Categorie> categories = new ArrayList<>();
+	 		Categorie alimentation = new Categorie("Alimentation");
+	 		categories.add(alimentation);
+			Categorie transport = new Categorie("Transport");
+			categories.add(transport);
+			Categorie loisir = new Categorie("Loisir");
+			categories.add(loisir);
+			Categorie foyer = new Categorie("Foyer");
+			categories.add(foyer);
+			Categorie entretien = new Categorie("Entretien");
+			categories.add(entretien);
+			Categorie voiture = new Categorie("Voiture");
+			categories.add(voiture);
+			Categorie formation = new Categorie("Formation");
+			categories.add(formation);
+			Categorie culture = new Categorie("Culture");
+			categories.add(culture);
+			Categorie telephonie = new Categorie("Téléphonie");
+			categories.add(telephonie);
+			Categorie impots = new Categorie("Impôt");
+			categories.add(impots);
+			Categorie assurance = new Categorie("Assurance");
+			categories.add(assurance);
+			Categorie abonnement = new Categorie("Abonnement");
+			categories.add(abonnement);
+			Categorie pension = new Categorie("Pension");
+			categories.add(pension);
+			Categorie famille = new Categorie("Famille");
+			categories.add(famille);
+			Categorie jardin = new Categorie("Jardin");
+			categories.add(jardin);
+			Categorie professionnel = new Categorie("Professionnel");
+			categories.add(professionnel);
+			Categorie credit = new Categorie("Crédit");
+			categories.add(credit);
+			Categorie outils = new Categorie("Outils");
+			categories.add(outils);
+			
+			for(Categorie c: categories) {
+				
+				categorieRepo.save(c);
+			}
+			
 		}
 		
 	}
@@ -74,8 +79,9 @@ public class CategorieService implements CategorieAbstractService, CommandLineRu
 
 	@Override
 	public List<Categorie> getAllCategories() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		List<Categorie> categories = categorieRepo.findAll();
+		return categories;
 	}
 
 	@Override
@@ -112,7 +118,6 @@ public class CategorieService implements CategorieAbstractService, CommandLineRu
 	@Override
 	public void run(String... args) throws Exception {
 		
-		System.out.println("Démarrage");
 		buildCategories();
 	}
 

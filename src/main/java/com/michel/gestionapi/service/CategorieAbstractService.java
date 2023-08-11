@@ -13,9 +13,10 @@ public interface CategorieAbstractService {
 	List<Categorie> getAllCategories();
 	List<Categorie> getAllCategoriesByCompte(Compte compte);
 	
-	int createCategorie(CategorieAux categorie);
-	int deleteCategorie(Categorie categorie);
-	int modifyCategorie(CategorieAux categorie);
+	void createCategorie(CategorieAux categorie);
+	void createCategorie(Categorie categorie);
+	void deleteCategorie(Categorie categorie);
+	void modifyCategorie(CategorieAux categorie);
 	
 	
 	

@@ -20,7 +20,7 @@ public class Compte {
 	@Column(unique=true)
 	private String reference;
 	
-	@Column(precision = 9, scale = 2)
+	@Column(precision = 2, scale = 5)
 	private float solde;
 
 	@ManyToOne
@@ -52,7 +52,8 @@ public class Compte {
 		this.regles = regles;
 		this.invitations = invitations;
 	}
-
+	
+	
 	public Integer getId() {
 		return id;
 	}

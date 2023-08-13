@@ -1,5 +1,7 @@
 package com.michel.gestionapi.model;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,6 +21,8 @@ public class Operation {
 	@Column(precision = 9, scale = 2)
 	private float montant;
 
+	private LocalDateTime date;
+
 	@ManyToOne
 	private Categorie categorie;
 
@@ -27,11 +31,12 @@ public class Operation {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Operation(Integer id, Compte compte, float montant, Categorie categorie) {
+	public Operation(Integer id, Compte compte, float montant, LocalDateTime date, Categorie categorie) {
 		super();
 		this.id = id;
 		this.compte = compte;
 		this.montant = montant;
+		this.date = date;
 		this.categorie = categorie;
 	}
 
@@ -67,5 +72,12 @@ public class Operation {
 		this.categorie = categorie;
 	}
 
+	public LocalDateTime getDate() {
+		return date;
+	}
+
+	public void setDate(LocalDateTime date) {
+		this.date = date;
+	}
 
 }

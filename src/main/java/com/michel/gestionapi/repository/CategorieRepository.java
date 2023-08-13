@@ -6,4 +6,6 @@ import com.michel.gestionapi.model.Categorie;
 
 public interface CategorieRepository extends JpaRepository<Categorie, Integer>{
 
+	Categorie findByNom(String nomCategorie);
+
 }

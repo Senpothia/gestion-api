@@ -15,18 +15,18 @@ import com.michel.gestionapi.service.CategorieAbstractService;
 
 @Service
 public class CategorieService implements CategorieAbstractService, CommandLineRunner {
-	
+
 	@Autowired
 	CategorieRepository categorieRepo;
 
 	public void buildCategories() {
-		
+
 		List<Categorie> cats = getAllCategories();
-		if(cats.isEmpty()) {
-			
+		if (cats.isEmpty()) {
+
 			List<Categorie> categories = new ArrayList<>();
-	 		Categorie alimentation = new Categorie("Alimentation");
-	 		categories.add(alimentation);
+			Categorie alimentation = new Categorie("Alimentation");
+			categories.add(alimentation);
 			Categorie transport = new Categorie("Transport");
 			categories.add(transport);
 			Categorie loisir = new Categorie("Loisir");
@@ -61,14 +61,16 @@ public class CategorieService implements CategorieAbstractService, CommandLineRu
 			categories.add(credit);
 			Categorie outils = new Categorie("Outils");
 			categories.add(outils);
-			
-			for(Categorie c: categories) {
-				
+			Categorie divers = new Categorie("Divers");
+			categories.add(divers);
+
+			for (Categorie c : categories) {
+
 				categorieRepo.save(c);
 			}
-			
+
 		}
-		
+
 	}
 
 	@Override
@@ -79,7 +81,7 @@ public class CategorieService implements CategorieAbstractService, CommandLineRu
 
 	@Override
 	public List<Categorie> getAllCategories() {
-		
+
 		List<Categorie> categories = categorieRepo.findAll();
 		return categories;
 	}
@@ -93,37 +95,36 @@ public class CategorieService implements CategorieAbstractService, CommandLineRu
 	@Override
 	public void createCategorie(CategorieAux categorie) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void deleteCategorie(Categorie categorie) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void modifyCategorie(CategorieAux categorie) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
-
 	public void createCategorie(Categorie categorie) {
-		
+
 		categorieRepo.save(categorie);
-		
+
 	}
 
 	@Override
 	public void run(String... args) throws Exception {
-		
+
 		buildCategories();
 	}
 
-
-
-	
-
+	public Categorie getByNom(String nomCategorie) {
+		Categorie categorie = categorieRepo.findByNom(nomCategorie);
+		return categorie;
+	}
 
 }

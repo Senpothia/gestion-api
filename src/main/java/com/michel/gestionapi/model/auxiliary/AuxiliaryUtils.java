@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.michel.gestionapi.model.Categorie;
 import com.michel.gestionapi.model.Compte;
 import com.michel.gestionapi.model.Invitation;
 import com.michel.gestionapi.model.Operation;
@@ -70,6 +71,19 @@ public class AuxiliaryUtils {
 
 		}
 		return csAux;
+	}
+
+	
+
+	public static List<String> makeListNomCategories(List<Categorie> categories) {
+		
+		List<String> catAux = new ArrayList<>();
+		for(Categorie c: categories) {
+			
+			catAux.add(c.getNom());
+		}
+		
+		return catAux;
 	}
 
 	

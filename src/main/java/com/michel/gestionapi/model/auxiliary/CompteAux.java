@@ -41,10 +41,11 @@ public class CompteAux {
 		this.reference = compte.getReference();
 		this.solde = compte.getSolde();
 		this.proprietaire = compte.getProprietaire().getId();
+		/*
 		this.operations = AuxiliaryUtils.makeListOperationsAux(compte.getOperations());
 		this.regles = AuxiliaryUtils.makeListReglesAux(compte.getRegles());
 		this.invitations = AuxiliaryUtils.makeListInvitationAux(compte.getInvitations());
-	
+		*/
 	}
 
 	public Integer getId() {

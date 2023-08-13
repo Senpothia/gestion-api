@@ -47,5 +47,12 @@ public class CompteService implements CompteAbstractService {
 		CompteAux c = new CompteAux(compte);
 		return c;
 	}
+	
+	
+	public Compte getSingleAccount(Integer idCompte) {
+
+		Compte compte = compteRepo.getReferenceById(idCompte);
+		return compte;
+	}
 
 }

@@ -55,4 +55,10 @@ public class CompteService implements CompteAbstractService {
 		return compte;
 	}
 
+	public void updateAccount(Compte compte) {
+	
+		compteRepo.save(compte);
+		
+	}
+
 }

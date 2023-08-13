@@ -12,10 +12,14 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.michel.gestionapi.model.Categorie;
+import com.michel.gestionapi.model.Compte;
+import com.michel.gestionapi.model.Operation;
 import com.michel.gestionapi.model.auxiliary.AuxiliaryUtils;
 import com.michel.gestionapi.model.auxiliary.CategorieAux;
+import com.michel.gestionapi.model.auxiliary.CompteAux;
 import com.michel.gestionapi.model.auxiliary.OperationAux;
 import com.michel.gestionapi.service.jpa.CategorieService;
+import com.michel.gestionapi.service.jpa.CompteService;
 import com.michel.gestionapi.service.jpa.OperationService;
 
 
@@ -30,6 +34,9 @@ public class OperationController {
 	
 	@Autowired
 	CategorieService categorieService;
+	
+	@Autowired
+	CompteService compteService;
 	
 	
 	@GetMapping("/compte/ajouter/operations/{id}")
@@ -53,6 +60,25 @@ public class OperationController {
 		List<Categorie> categories = categorieService.getAllCategories();
 		List<String> cats = AuxiliaryUtils.makeListNomCategories(categories);
 		return cats; 
+	}
+	
+	@GetMapping("/operation/modifier/{id}")
+	OperationAux getOperationsById(@RequestHeader("Authorization") String token, @PathVariable("id") Integer id) {
+		
+		Operation op = operationService.getOperationById(id);
+		OperationAux operation = new OperationAux(op);
+		Compte cpte = op.getCompte();
+		CompteAux cAux = new CompteAux(cpte);
+		operation.setCompte(cAux);
+		return operation;
+	}
+	
+	
+	@PostMapping("/operation/modifier/{id}")
+	void modifyOperation(@RequestHeader("Authorization") String token, @RequestBody OperationAux operation, @PathVariable("id") Integer id) {
+		
+		operationService.modifyOperation(operation);
+		
 	}
 
 }

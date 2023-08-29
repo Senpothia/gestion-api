@@ -17,19 +17,26 @@ import com.michel.gestionapi.service.jpa.CompteService;
 public class CompteController {
 
 	@Autowired
-	CompteService compteServive;
+	CompteService compteService;
 
 	@PostMapping("/compte/save")
 	void creerCompteBancaire(@RequestHeader("Authorization") String token, @RequestBody CompteAux compte) {
 
-		compteServive.ajouterCompte(compte);
+		compteService.ajouterCompte(compte);
+
+	}
+	
+	@PostMapping("/compte/modifier")
+	void modifierCompteBancaire(@RequestHeader("Authorization") String token, @RequestBody CompteAux compte) {
+
+		compteService.modifierCompte(compte);
 
 	}
 
 	@GetMapping("/get/comptes/{userId}")
 	List<CompteAux> getComptes(@RequestHeader("Authorization") String token, @PathVariable("userId") Integer userId) {
 		
-		List<CompteAux> comptes = compteServive.getComptes(userId);
+		List<CompteAux> comptes = compteService.getComptes(userId);
 		return comptes;
 	}
 	
@@ -39,7 +46,7 @@ public class CompteController {
 	CompteAux getCompte(@RequestHeader("Authorization") String token, @PathVariable("idCompte") Integer idCompte) {
 		
 		
-		CompteAux compte = compteServive.getCompte(idCompte);
+		CompteAux compte = compteService.getCompte(idCompte);
 		return compte;
 	}
 	

@@ -61,4 +61,17 @@ public class CompteService implements CompteAbstractService {
 		
 	}
 
+	public void modifierCompte(CompteAux compte) {
+		
+		
+		Compte c = compteRepo.getReferenceById(compte.getId());
+		c.setNom(compte.getNom());
+		//Utilisateur proprietaire = userService.obtenirUserParId(compte.getProprietaire());
+		//c.setProprietaire(proprietaire);
+		c.setReference(compte.getReference());
+		c.setSolde(compte.getSolde());
+		compteRepo.save(c);
+		
+	}
+
 }
